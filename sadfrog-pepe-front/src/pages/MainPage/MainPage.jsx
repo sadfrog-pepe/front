@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import MainMenu from '../../component/organisms/MainMenu';
 import MainBanner from '../../component/organisms/MainBanner';
 import DetailMenu from '../DetailMenu/DetailMenu';
+import MainProduction from '../../component/organisms/MainProduction';
 
 const MainPageContainer = styled.div`
     display: flex;
@@ -52,6 +53,7 @@ const MainPage = () => {
             />
             <MainPageContents>
                 <MainPageHeader>
+                    <MainProduction />
                     <MainMenu />
                     <MainBanner showDetailMenu={showSideDetailMenu} />
                 </MainPageHeader>
