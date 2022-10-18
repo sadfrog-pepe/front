@@ -12,16 +12,16 @@ const MainBannerContainer = styled.div`
     justify-content: space-between;
 `;
 
-const MainBanner = () => {
-    const [isShowMenu, setIsShowMenu] = useState(false);
-
+const MainBanner = ({ showDetailMenu }) => {
     return (
         <MainBannerContainer>
-            {isShowMenu ? <DetailMenu /> : null}
-            <Button.icon
+            {/* <Button.icon
                 icon={faBars}
-                onClick={() => setIsShowMenu(!isShowMenu)}
-            ></Button.icon>
+                onClick={() => toggleDetailMenu()}
+            ></Button.icon> */}
+            <button type="button" onClick={() => showDetailMenu()}>
+                클릭
+            </button>
             <Logo />
             <MiniSearch />
         </MainBannerContainer>

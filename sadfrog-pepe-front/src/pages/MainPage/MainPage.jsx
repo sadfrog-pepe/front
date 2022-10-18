@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import MainMenu from '../../component/organisms/MainMenu';
 import MainBanner from '../../component/organisms/MainBanner';
+import DetailMenu from '../DetailMenu/DetailMenu';
 
 const MainPageContainer = styled.div`
     display: flex;
@@ -23,12 +24,36 @@ const MainPageContents = styled.div`
 const MainPageHeader = styled.header``;
 
 const MainPage = () => {
+    const [showDetailMenu, setShowDetailMenu] = useState(false);
+
+    // const toggleDetailMenu = () => {
+    //     setShowDetailMenu((prev) => !prev);
+    //     console.log('click!');
+    // };
+
+    const showSideDetailMenu = () => {
+        setShowDetailMenu(true);
+        document.body.style.overflow = 'hidden';
+    };
+
+    const hideSideDetailMenu = () => {
+        setShowDetailMenu(false);
+        document.body.style.overflow = 'unset';
+    };
     return (
         <MainPageContainer>
+            {/* {showDetailMenu && (
+                <DetailMenu toggleDetailMenu={toggleDetailMenu} />
+            )} */}
+
+            <DetailMenu
+                isShow={showDetailMenu}
+                hideDetailMenu={hideSideDetailMenu}
+            />
             <MainPageContents>
                 <MainPageHeader>
                     <MainMenu />
-                    <MainBanner />
+                    <MainBanner showDetailMenu={showSideDetailMenu} />
                 </MainPageHeader>
             </MainPageContents>
         </MainPageContainer>
