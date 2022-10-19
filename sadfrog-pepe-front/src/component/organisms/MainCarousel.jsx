@@ -19,6 +19,7 @@ const CarouselImageList = styled.div`
     transition: all 4s ease 0s;
     transform: ${(props) => 'translateX(-' + props.count * 100 + '%)'};
 `;
+
 const CarouselImage = styled.div`
     width: 100%;
     height: 400px;
@@ -40,7 +41,6 @@ const RightArrow = styled.button`
     align-items: center;
     z-index: 100;
     font-size: 2rem;
-    transition: all 0.5s linear 0s;
 
     &:hover {
         font-size: 3rem;
@@ -49,6 +49,21 @@ const RightArrow = styled.button`
 const LeftArrow = styled(RightArrow)`
     left: 0;
 `;
+
+const CarouselBtns = styled.div`
+    position: absolute;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    bottom: 1rem;
+
+    /* 현재 보여지는 image에 해당하는 버튼 색 바꾸기 위해 작성 : 현재 적용안됨 */
+    &:nth-child(${(props) => props.count + 1}) {
+        background-color: gray;
+    }
+`;
+
 const MainCarousel = () => {
     const IMG = ['images/1.png', 'images/2.png', 'images/3.png']; // dummy data
     const TOTAL_LENGTH = IMG.length - 1;
@@ -60,7 +75,8 @@ const MainCarousel = () => {
             setCount((prev) => (prev === TOTAL_LENGTH ? 0 : prev + 1));
         }, 8000);
 
-        console.log(count);
+        // console.log(count);
+
         return () => {
             clearInterval(timer);
         };
@@ -74,22 +90,36 @@ const MainCarousel = () => {
         setCount((prev) => (prev === 0 ? TOTAL_LENGTH : prev - 1));
     };
 
+    const changeCount = (num) => {
+        setCount(num);
+    };
+
     return (
-        <div>
-            <CarouselContainer>
-                <CarouselImageList count={count}>
-                    {IMG.map((img, i) => (
-                        <CarouselImage background={img} key={i}></CarouselImage>
-                    ))}
-                </CarouselImageList>
-                <LeftArrow type="button" onClick={() => prevImage()}>
-                    {'<'}
-                </LeftArrow>
-                <RightArrow type="button" onClick={() => nextImage()}>
-                    {'>'}
-                </RightArrow>
-            </CarouselContainer>
-        </div>
+        <CarouselContainer>
+            <CarouselImageList count={count}>
+                {IMG.map((img, i) => (
+                    <CarouselImage background={img} key={i}></CarouselImage>
+                ))}
+            </CarouselImageList>
+            <LeftArrow type="button" onClick={() => prevImage()}>
+                {'<'}
+            </LeftArrow>
+            <RightArrow type="button" onClick={() => nextImage()}>
+                {'>'}
+            </RightArrow>
+            <CarouselBtns>
+                {IMG.map((img, i) => (
+                    <button
+                        key={i}
+                        onClick={() => changeCount(i)}
+                        count={count}
+                        style={{ backgroundColor: 'black', color: 'white' }}
+                    >
+                        {i + 1}
+                    </button>
+                ))}
+            </CarouselBtns>
+        </CarouselContainer>
     );
 };
 
