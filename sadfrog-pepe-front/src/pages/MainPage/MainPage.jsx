@@ -4,6 +4,7 @@ import MainMenu from '../../component/organisms/MainMenu';
 import MainBanner from '../../component/organisms/MainBanner';
 import DetailMenu from '../DetailMenu/DetailMenu';
 import MainProduction from '../../component/organisms/MainProduction';
+import MainCarousel from '../../component/organisms/MainCarousel';
 
 const MainPageContainer = styled.div`
     display: flex;
@@ -18,13 +19,17 @@ const MainPageContents = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 1px solid black;
 `;
 
 const MainPageHeader = styled.header`
     display: flex;
     flex-direction: column;
     align-items: center;
+`;
+
+const MainPageBody = styled.section`
+    width: 100%;
+    border: 1px solid black;
 `;
 
 const MainPage = () => {
@@ -53,6 +58,9 @@ const MainPage = () => {
                     <MainBanner showDetailMenu={showSideDetailMenu} />
                     <MainMenu />
                 </MainPageHeader>
+                <MainPageBody>
+                    <MainCarousel />
+                </MainPageBody>
             </MainPageContents>
         </MainPageContainer>
     );

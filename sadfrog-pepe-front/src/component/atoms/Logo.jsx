@@ -1,13 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const logoUrl = '../../assets/ourLogo.png';
+const LOGO_URL = 'images/ourLogo.png';
 
 const LogoContainer = styled.div`
-    width: 100px;
-    height: 50px;
-    border: 1px solid black;
-    background-image: url('https://vinzip.kr/web/upload/NNEditor/20211230/418f931a6cd13d65f90bec9cd56bad91.jpg');
+    width: 200px;
+    height: 100px;
+    background-image: url(${LOGO_URL});
     background-repeat: no-repeat;
     background-size: contain;
 `;
