@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import LinkList from '../moecules/LinkList';
 
 const MainMenuContainer = styled.div`
@@ -9,7 +9,7 @@ const MainMenuContainer = styled.div`
     border: 1px dotted blue;
 `;
 const DropDownContents = styled.div`
-    display: none;
+    display: block;
     position: absolute;
     background-color: white;
     width: 900px;

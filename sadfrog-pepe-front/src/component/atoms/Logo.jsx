@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-
-const LOGO_URL = 'images/ourLogo.png';
+import { LOGO_URL } from '../../constant';
 
 const LogoContainer = styled.div`
     width: 200px;

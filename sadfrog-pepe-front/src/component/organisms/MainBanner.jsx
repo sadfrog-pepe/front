@@ -1,10 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import Button from '../atoms/Button';
 import Logo from '../atoms/Logo';
-import MiniSearch from '../moecules/MiniSearch';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
-import DetailMenu from '../../pages/DetailMenu/DetailMenu';
 
 const MainBannerContainer = styled.div`
     display: flex;
