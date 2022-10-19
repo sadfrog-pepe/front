@@ -9,7 +9,7 @@ const MainMenuContainer = styled.div`
     border: 1px dotted blue;
 `;
 const DropDownContents = styled.div`
-    display: block;
+    display: none;
     position: absolute;
     background-color: white;
     width: 900px;
