@@ -4,9 +4,10 @@ import LinkComponent from '../atoms/Link';
 
 const MainLinkList = styled.div`
     display: flex;
-    width: 1500px;
+    margin: 0;
+    padding: 0;
+    width: 800px;
     height: 50px;
-    border: 1px black dotted;
     justify-content: space-around;
     align-items: center;
 `;
@@ -14,11 +15,17 @@ const MainLinkList = styled.div`
 const LinkList = () => {
     return (
         <MainLinkList>
-            <LinkComponent to={'/login'}>로그인</LinkComponent>
-            <LinkComponent to={'/register'}>회원가입</LinkComponent>
-            <LinkComponent to={'/##'}>장바구니</LinkComponent>
-            <LinkComponent to={'/##'}>마이페이지</LinkComponent>
-            <LinkComponent to={'/##'}>주문조회</LinkComponent>
+            <LinkComponent to={'/##'}>[브랜드]</LinkComponent>
+            <LinkComponent to={'/##'} color="gold">
+                [프리미엄]
+            </LinkComponent>
+            <LinkComponent to={'/##'}>[SET]</LinkComponent>
+            <LinkComponent to={'/##'}>[미사용품]</LinkComponent>
+            <LinkComponent to={'/##'}>[신상품]</LinkComponent>
+            <LinkComponent to={'/##'}>[아우터]</LinkComponent>
+            <LinkComponent to={'/##'}>[상의]</LinkComponent>
+            <LinkComponent to={'/##'}>[팬츠]</LinkComponent>
+            <LinkComponent to={'/##'}>[For woman]</LinkComponent>
         </MainLinkList>
     );
 };

@@ -7,23 +7,21 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 import DetailMenu from '../../pages/DetailMenu/DetailMenu';
 
 const MainBannerContainer = styled.div`
-    width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 150px;
 `;
 
 const MainBanner = ({ showDetailMenu }) => {
     return (
         <MainBannerContainer>
-            {/* <Button.icon
-                icon={faBars}
-                onClick={() => toggleDetailMenu()}
-            ></Button.icon> */}
-            <button type="button" onClick={() => showDetailMenu()}>
+            {/* <button type="button" onClick={() => showDetailMenu()}>
                 클릭
-            </button>
+            </button> */}
+
             <Logo />
-            <MiniSearch />
         </MainBannerContainer>
     );
 };

@@ -63,16 +63,25 @@ const DetailMenuCloseButton = styled.span`
     background-color: white;
     font-size: 1.5rem;
 
-    animation: 1s btnShowUp;
+    animation: 1.25s btnShowUp;
+    animation: 1.5s btnOpacity;
 
     @keyframes btnShowUp {
         0% {
-            transform: translate(-200%, 0);
-            opacity: 0;
+            transform: translate(-250%, 0);
         }
 
         100% {
             transform: translate(0, 0);
+        }
+    }
+
+    @keyframes btnOpacity {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
             opacity: 1;
         }
     }

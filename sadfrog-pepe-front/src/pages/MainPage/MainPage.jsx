@@ -9,28 +9,26 @@ const MainPageContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
     height: 100%;
 `;
 
 const MainPageContents = styled.div`
-    width: 1500px;
     display: flex;
+    width: 100%;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     border: 1px solid black;
 `;
 
-const MainPageHeader = styled.header``;
+const MainPageHeader = styled.header`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`;
 
 const MainPage = () => {
     const [showDetailMenu, setShowDetailMenu] = useState(false);
-
-    // const toggleDetailMenu = () => {
-    //     setShowDetailMenu((prev) => !prev);
-    //     console.log('click!');
-    // };
 
     const showSideDetailMenu = () => {
         setShowDetailMenu(true);
@@ -43,19 +41,17 @@ const MainPage = () => {
     };
     return (
         <MainPageContainer>
-            {/* {showDetailMenu && (
-                <DetailMenu toggleDetailMenu={toggleDetailMenu} />
-            )} */}
-
             <DetailMenu
                 isShow={showDetailMenu}
                 hideDetailMenu={hideSideDetailMenu}
             />
             <MainPageContents>
+                {/* 광고판 */}
+                <MainProduction />
+                {/* 헤더 */}
                 <MainPageHeader>
-                    <MainProduction />
-                    <MainMenu />
                     <MainBanner showDetailMenu={showSideDetailMenu} />
+                    <MainMenu />
                 </MainPageHeader>
             </MainPageContents>
         </MainPageContainer>

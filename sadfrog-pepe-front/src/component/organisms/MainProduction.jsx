@@ -2,7 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 
 const ProductionContainer = styled.div`
-    height: 100px;
+    width: 100%;
+    height: 50px;
+    border: 1px solid black;
 `;
 
 const MainProduction = () => {
