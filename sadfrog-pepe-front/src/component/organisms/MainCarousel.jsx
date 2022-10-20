@@ -75,8 +75,6 @@ const MainCarousel = () => {
             setCount((prev) => (prev === TOTAL_LENGTH ? 0 : prev + 1));
         }, 8000);
 
-        // console.log(count);
-
         return () => {
             clearInterval(timer);
         };
