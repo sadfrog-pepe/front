@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
+
 import styled from 'styled-components';
 import Arrow, { ArrowType } from '../atoms/arrow/Arrow';
 import ArrowList from '../moecules/ArrowList';
@@ -18,7 +19,7 @@ const CarouselContainer = styled.div`
 const CarouselImageList = styled.div`
     width: 100%;
     display: flex;
-    transition: all 4s ease 0s;
+    transition: ${(props) => (!props.count ? '0s' : 'all 1s ease 0s')};
     transform: ${(props) => 'translateX(-' + props.count * 100 + '%)'};
 `;
 
@@ -47,16 +48,31 @@ const CarouselBtns = styled.div`
 `;
 
 const MainCarousel = () => {
-    const IMG = ['images/1.png', 'images/2.png', 'images/3.png']; // dummy data
+    const IMG = [
+        'images/1.png',
+        'images/2.png',
+        'images/3.png',
+        'images/1.png',
+    ]; // dummy data
     const TOTAL_LENGTH = IMG.length - 1;
 
     const [count, setCount] = useState(0);
+    const lastImg = useRef(false);
 
     useEffect(() => {
-        const timer = setInterval(() => {
-            setCount((prev) => (prev === TOTAL_LENGTH ? 0 : prev + 1));
-        }, 8000);
-
+        const timer = setInterval(
+            () => {
+                if (count < TOTAL_LENGTH) {
+                    lastImg.current = false;
+                    setCount((prev) => prev + 1);
+                } else {
+                    lastImg.current = true;
+                    setCount(0);
+                }
+            },
+            lastImg.current ? 0 : 4000
+        );
+        console.log(count);
         return () => {
             clearInterval(timer);
         };
@@ -92,7 +108,7 @@ const MainCarousel = () => {
                         count={count}
                         style={{ backgroundColor: 'black', color: 'white' }}
                     >
-                        {i + 1}
+                        {i < TOTAL_LENGTH ? i + 1 : null}
                     </button>
                 ))}
             </CarouselBtns>
