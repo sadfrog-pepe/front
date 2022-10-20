@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import Arrow, { ArrowType } from '../atoms/arrow/Arrow';
+import ArrowList from '../moecules/ArrowList';
 
 const CarouselContainer = styled.div`
     position: relative;
@@ -28,26 +30,6 @@ const CarouselImage = styled.div`
     background-repeat: no-repeat;
     background-size: contain;
     flex: none;
-`;
-
-const RightArrow = styled.button`
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 80px;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 100;
-    font-size: 2rem;
-
-    &:hover {
-        font-size: 3rem;
-    }
-`;
-const LeftArrow = styled(RightArrow)`
-    left: 0;
 `;
 
 const CarouselBtns = styled.div`
@@ -99,12 +81,9 @@ const MainCarousel = () => {
                     <CarouselImage background={img} key={i}></CarouselImage>
                 ))}
             </CarouselImageList>
-            <LeftArrow type="button" onClick={() => prevImage()}>
-                {'<'}
-            </LeftArrow>
-            <RightArrow type="button" onClick={() => nextImage()}>
-                {'>'}
-            </RightArrow>
+
+            <ArrowList next={() => nextImage()} prev={() => prevImage()} />
+
             <CarouselBtns>
                 {IMG.map((img, i) => (
                     <button

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Arrow, { ArrowType } from '../atoms/arrow/Arrow';
 import Button, {
     ButtonType,
     ButtonTheme,
