@@ -24,10 +24,6 @@ const DropBtn = styled.button`
     padding: 16px;
     font-size: 16px;
     border: none;
-
-    &:hover ${DropDownContents} {
-        display: block;
-    }
 `;
 
 const DropDown = styled.div`
@@ -35,6 +31,9 @@ const DropDown = styled.div`
     display: inline-block;
     &:hover ${DropBtn} {
         color: gray;
+    }
+    &:hover ${DropDownContents} {
+        display: block;
     }
 `;
 

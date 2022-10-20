@@ -16,21 +16,9 @@ const MainBannerContainer = styled.div`
     height: 150px;
 `;
 
-const MainBanner = ({ showDetailMenu }) => {
+const MainBanner = () => {
     return (
         <MainBannerContainer>
-            {/* <button type="button" onClick={() => showDetailMenu()}>
-                클릭
-            </button> */}
-            <Button
-                onClick={() => showDetailMenu()}
-                type={ButtonType.BUTTON}
-                theme={ButtonTheme.ROUNDED}
-                size={ButtonSize.LARGE}
-            >
-                Click
-            </Button>
-
             <Logo />
         </MainBannerContainer>
     );
