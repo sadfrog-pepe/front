@@ -1,6 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import LinkComponent, { LinkSize, LinkTheme } from '../atoms/link/Link';
+import LinkComponent, {
+    LinkSize,
+    LinkTheme,
+    StyledLink,
+} from '../atoms/link/Link';
 
 const MainLinkList = styled.div`
     display: flex;
@@ -79,6 +83,7 @@ const LinkList = () => {
             >
                 [For woman]
             </LinkComponent>
+            <StyledLink small>[For man]</StyledLink>
         </MainLinkList>
     );
 };
