@@ -5,7 +5,7 @@ import Button, {
     ButtonTheme,
     ButtonSize,
 } from '../atoms/button/Button';
-import Logo from '../atoms/Logo';
+import { Logo } from '../atoms/logo/Logo';
 
 const MainBannerContainer = styled.div`
     display: flex;
