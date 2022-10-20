@@ -1,0 +1,18 @@
+.link {
+    font-size: 0.9em;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-radius: 3px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.default {
+    color: black;
+    background-color: white;
+    border: none;
+}
+
+.gold {
+    color : gold
+}
