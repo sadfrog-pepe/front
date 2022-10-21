@@ -1,11 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import Arrow, { ArrowType } from '../atoms/arrow/Arrow';
-import Button, {
-    ButtonType,
-    ButtonTheme,
-    ButtonSize,
-} from '../atoms/button/Button';
 import { Logo } from '../atoms/logo/Logo';
 
 const MainBannerContainer = styled.div`

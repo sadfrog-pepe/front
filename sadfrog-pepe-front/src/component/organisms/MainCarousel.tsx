@@ -15,23 +15,36 @@ const CarouselContainer = styled.div`
     }
 `;
 
+export interface ImageListProps {
+    count: number;
+}
+
 const CarouselImageList = styled.div`
     width: 100%;
     display: flex;
-    transition: ${(props) => (!props.count ? '0s' : 'all 1s ease 0s')};
-    transform: ${(props) => 'translateX(-' + props.count * 100 + '%)'};
+    transition: ${(props: ImageListProps) =>
+        !props.count ? '0s' : 'all 1s ease 0s'};
+    transform: ${(props: ImageListProps) =>
+        'translateX(-' + props.count * 100 + '%)'};
 `;
+
+export interface ImageProps {
+    background: string;
+}
 
 const CarouselImage = styled.div`
     width: 100%;
     height: 400px;
-    background-image: url(${(props) => props.background});
+    background-image: url(${(props: ImageProps) => props.background});
     background-position: 50% 50%;
     background-repeat: no-repeat;
     background-size: contain;
     flex: none;
 `;
 
+export interface btnProps {
+    count: number;
+}
 const CarouselBtns = styled.div`
     position: absolute;
     width: 100%;
@@ -39,11 +52,6 @@ const CarouselBtns = styled.div`
     display: flex;
     justify-content: center;
     bottom: 1rem;
-
-    /* 현재 보여지는 image에 해당하는 버튼 색 바꾸기 위해 작성 : 현재 적용안됨 */
-    &:nth-child(${(props) => props.count + 1}) {
-        background-color: gray;
-    }
 `;
 
 const MainCarousel = () => {
@@ -71,21 +79,20 @@ const MainCarousel = () => {
             },
             lastImg.current ? 0 : 4000
         );
-        console.log(count);
         return () => {
             clearInterval(timer);
         };
     }, [count]);
 
-    const nextImage = () => {
+    const nextImage = (): void => {
         setCount((prev) => (prev === TOTAL_LENGTH ? 0 : prev + 1));
     };
 
-    const prevImage = () => {
+    const prevImage = (): void => {
         setCount((prev) => (prev === 0 ? TOTAL_LENGTH : prev - 1));
     };
 
-    const changeCount = (num) => {
+    const changeCount = (num: number): void => {
         setCount(num);
     };
 
@@ -104,7 +111,6 @@ const MainCarousel = () => {
                     <button
                         key={i}
                         onClick={() => changeCount(i)}
-                        count={count}
                         style={{ backgroundColor: 'black', color: 'white' }}
                     >
                         {i < TOTAL_LENGTH ? i + 1 : null}

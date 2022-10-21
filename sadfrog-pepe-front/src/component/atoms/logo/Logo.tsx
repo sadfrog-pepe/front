@@ -2,8 +2,8 @@ import styled from 'styled-components';
 import { LOGO_URL } from '../../../constant';
 
 interface LogoProps {
-    width: string;
-    height: string;
+    width?: string;
+    height?: string;
 }
 
 export const Logo = styled.div`
