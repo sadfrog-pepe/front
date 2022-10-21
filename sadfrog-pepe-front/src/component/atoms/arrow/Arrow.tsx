@@ -2,12 +2,17 @@ import React from 'react';
 import styles from './Arrow.module.css';
 import classnames from 'classnames';
 
-export const ArrowType = {
-    RIGTH: 'right',
-    LEFT: 'left',
-};
+// export const ArrowType = {
+//     RIGTH: 'right',
+//     LEFT: 'left',
+// };
 
-const Arrow = (props) => {
+export enum ArrowType {
+    RIGHT = 'RIGHT',
+    LEFT = 'LEFT',
+}
+
+const Arrow = (props: any) => {
     const { onClick, type, className } = props;
     const classProp = classnames(styles.arrow, styles[type], className);
 
