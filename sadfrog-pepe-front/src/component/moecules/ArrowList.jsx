@@ -15,7 +15,7 @@ const ArrowList = (props) => {
     return (
         <ArrowContainer>
             <Arrow type={ArrowType.LEFT} onClick={prev} />
-            <Arrow type={ArrowType.RIGTH} onClick={next} />
+            <Arrow type={ArrowType.RIGHT} onClick={next} />
         </ArrowContainer>
     );
 };

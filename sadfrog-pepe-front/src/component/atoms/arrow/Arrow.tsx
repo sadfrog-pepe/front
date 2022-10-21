@@ -2,19 +2,24 @@ import React from 'react';
 import styles from './Arrow.module.css';
 import classnames from 'classnames';
 
-// export const ArrowType = {
-//     RIGTH: 'right',
-//     LEFT: 'left',
-// };
-
 export enum ArrowType {
-    RIGHT = 'RIGHT',
-    LEFT = 'LEFT',
+    RIGHT = 'right',
+    LEFT = 'left',
 }
 
-const Arrow = (props: any) => {
+export type ArrowProps = {
+    onClick?: React.MouseEventHandler<HTMLButtonElement>;
+    type?: ArrowType;
+    className?: string;
+};
+
+const Arrow = (props: ArrowProps) => {
     const { onClick, type, className } = props;
-    const classProp = classnames(styles.arrow, styles[type], className);
+    const classProp = classnames(
+        styles.arrow,
+        styles[type ? type : ''],
+        className
+    );
 
     let arrowType = type === 'right' ? '>' : '<';
     return (

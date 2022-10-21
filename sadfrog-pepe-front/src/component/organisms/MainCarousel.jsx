@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 
 import styled from 'styled-components';
-import Arrow, { ArrowType } from '../atoms/arrow/Arrow';
 import ArrowList from '../moecules/ArrowList';
 
 const CarouselContainer = styled.div`
