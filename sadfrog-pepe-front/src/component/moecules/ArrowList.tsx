@@ -9,7 +9,12 @@ const ArrowContainer = styled.div`
     top: 50%;
 `;
 
-const ArrowList = (props) => {
+export interface ArrowListProps {
+    next: React.MouseEventHandler<HTMLButtonElement>;
+    prev: React.MouseEventHandler<HTMLButtonElement>;
+}
+
+const ArrowList = (props: ArrowListProps) => {
     const { next, prev } = props;
 
     return (
