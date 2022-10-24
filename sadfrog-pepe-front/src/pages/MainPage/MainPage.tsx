@@ -55,8 +55,8 @@ const MainPage = () => {
                 <MainProduction />
                 {/* 헤더 */}
                 <MainPageHeader>
-                    <MainBanner />
-                    <MainMenu />
+                    {/* <MainBanner /> */}
+                    {/* <MainMenu /> */}
                 </MainPageHeader>
                 <MainPageBody>
                     <MainCarousel />
