@@ -20,17 +20,19 @@ interface InputProps {
     value: string;
     className?: string;
     placeholder?: string;
+    onChange?: React.ChangeEventHandler<HTMLInputElement>;
 }
 
 const Input = <T extends InputProps>(props: T) => {
-    const { type, value, className, placeholder } = props;
+    const { type, value, className, placeholder, onChange } = props;
     const classProps = classNames(styles.input, className);
     return (
         <input
             type={type}
             placeholder={placeholder}
             className={classProps}
-            value={value}
+            defaultValue={value}
+            onChange={onChange}
         ></input>
     );
 };
