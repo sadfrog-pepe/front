@@ -1,0 +1,9 @@
+.title {
+    color : black;
+    height: 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    font-family: 'Roboto', sans-serif;
+}
