@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Logo from '../atoms/Logo';
+import { Logo } from '../atoms/logo/Logo';
 
 const MainBannerContainer = styled.div`
     display: flex;
@@ -10,13 +10,9 @@ const MainBannerContainer = styled.div`
     height: 150px;
 `;
 
-const MainBanner = ({ showDetailMenu }) => {
+const MainBanner = () => {
     return (
         <MainBannerContainer>
-            {/* <button type="button" onClick={() => showDetailMenu()}>
-                클릭
-            </button> */}
-
             <Logo />
         </MainBannerContainer>
     );

@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
+
 import styled from 'styled-components';
+import ArrowList from '../moecules/ArrowList';
 
 const CarouselContainer = styled.div`
     position: relative;
@@ -13,43 +15,36 @@ const CarouselContainer = styled.div`
     }
 `;
 
+export interface ImageListProps {
+    count: number;
+}
+
 const CarouselImageList = styled.div`
     width: 100%;
     display: flex;
-    transition: all 4s ease 0s;
-    transform: ${(props) => 'translateX(-' + props.count * 100 + '%)'};
+    transition: ${(props: ImageListProps) =>
+        !props.count ? '0s' : 'all 1s ease 0s'};
+    transform: ${(props: ImageListProps) =>
+        'translateX(-' + props.count * 100 + '%)'};
 `;
+
+export interface ImageProps {
+    background: string;
+}
 
 const CarouselImage = styled.div`
     width: 100%;
     height: 400px;
-    background-image: url(${(props) => props.background});
+    background-image: url(${(props: ImageProps) => props.background});
     background-position: 50% 50%;
     background-repeat: no-repeat;
     background-size: contain;
     flex: none;
 `;
 
-const RightArrow = styled.button`
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 80px;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 100;
-    font-size: 2rem;
-
-    &:hover {
-        font-size: 3rem;
-    }
-`;
-const LeftArrow = styled(RightArrow)`
-    left: 0;
-`;
-
+export interface btnProps {
+    count: number;
+}
 const CarouselBtns = styled.div`
     position: absolute;
     width: 100%;
@@ -57,40 +52,47 @@ const CarouselBtns = styled.div`
     display: flex;
     justify-content: center;
     bottom: 1rem;
-
-    /* 현재 보여지는 image에 해당하는 버튼 색 바꾸기 위해 작성 : 현재 적용안됨 */
-    &:nth-child(${(props) => props.count + 1}) {
-        background-color: gray;
-    }
 `;
 
 const MainCarousel = () => {
-    const IMG = ['images/1.png', 'images/2.png', 'images/3.png']; // dummy data
+    const IMG = [
+        'images/1.png',
+        'images/2.png',
+        'images/3.png',
+        'images/1.png',
+    ]; // dummy data
     const TOTAL_LENGTH = IMG.length - 1;
 
     const [count, setCount] = useState(0);
+    const lastImg = useRef(false);
 
     useEffect(() => {
-        const timer = setInterval(() => {
-            setCount((prev) => (prev === TOTAL_LENGTH ? 0 : prev + 1));
-        }, 8000);
-
-        // console.log(count);
-
+        const timer = setInterval(
+            () => {
+                if (count < TOTAL_LENGTH) {
+                    lastImg.current = false;
+                    setCount((prev) => prev + 1);
+                } else {
+                    lastImg.current = true;
+                    setCount(0);
+                }
+            },
+            lastImg.current ? 0 : 4000
+        );
         return () => {
             clearInterval(timer);
         };
     }, [count]);
 
-    const nextImage = () => {
+    const nextImage = (): void => {
         setCount((prev) => (prev === TOTAL_LENGTH ? 0 : prev + 1));
     };
 
-    const prevImage = () => {
+    const prevImage = (): void => {
         setCount((prev) => (prev === 0 ? TOTAL_LENGTH : prev - 1));
     };
 
-    const changeCount = (num) => {
+    const changeCount = (num: number): void => {
         setCount(num);
     };
 
@@ -101,21 +103,17 @@ const MainCarousel = () => {
                     <CarouselImage background={img} key={i}></CarouselImage>
                 ))}
             </CarouselImageList>
-            <LeftArrow type="button" onClick={() => prevImage()}>
-                {'<'}
-            </LeftArrow>
-            <RightArrow type="button" onClick={() => nextImage()}>
-                {'>'}
-            </RightArrow>
+
+            <ArrowList next={() => nextImage()} prev={() => prevImage()} />
+
             <CarouselBtns>
                 {IMG.map((img, i) => (
                     <button
                         key={i}
                         onClick={() => changeCount(i)}
-                        count={count}
                         style={{ backgroundColor: 'black', color: 'white' }}
                     >
-                        {i + 1}
+                        {i < TOTAL_LENGTH ? i + 1 : null}
                     </button>
                 ))}
             </CarouselBtns>

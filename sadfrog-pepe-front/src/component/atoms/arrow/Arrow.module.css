@@ -1,0 +1,19 @@
+.arrow {
+    z-index: 100;
+    width: 45px;
+    font-size: 1rem;
+}
+.arrow:hover {
+    transform: scale(2);
+    transform-origin: 50% 50%;
+}
+
+.left {
+    position: absolute;
+    left : 0
+}
+
+.right {
+    position: absolute;
+    right: 0;
+}
