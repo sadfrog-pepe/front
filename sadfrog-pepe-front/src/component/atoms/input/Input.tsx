@@ -7,6 +7,9 @@ import styles from './Input.module.css';
 export enum InputDefaultValue {
     ID = '아이디',
     PASSWORD = '비밀번호',
+    PASSWORD_CHECK = '비밀번호 확인',
+    PHONE = '전화번호',
+    NAME = '이름',
 }
 
 interface InputProps {

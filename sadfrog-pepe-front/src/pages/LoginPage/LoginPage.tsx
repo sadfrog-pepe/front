@@ -56,7 +56,7 @@ const LoginPage = () => {
 
     return (
         <LoginContainer>
-            <Title>Login</Title>
+            <Title>Sign in</Title>
             <Form onSubmit={onSubmitHandler}>
                 <Input
                     type="text"
