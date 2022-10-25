@@ -1,15 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import Input, {
-    InputType,
-    InputDefaultValue,
-} from '../../component/atoms/input/Input';
-import Button, {
-    ButtonType,
-    ButtonTheme,
-    ButtonSize,
-} from '../../component/atoms/button/Button';
+import Input, { InputDefaultValue } from '../../component/atoms/input/Input';
 import Title from '../../component/atoms/title/Title';
+import Btn from '../../component/atoms/button/Btn';
 
 const LoginContainer = styled.div`
     display: flex;
@@ -66,13 +59,13 @@ const LoginPage = () => {
             <Title>Login</Title>
             <Form onSubmit={onSubmitHandler}>
                 <Input
-                    type={InputType.TEXT}
+                    type="text"
                     placeholder={InputDefaultValue.ID}
                     value={email}
                     onChange={onEmailHandler}
                 />
                 <Input
-                    type={InputType.PASSWORD}
+                    type="password"
                     placeholder={InputDefaultValue.PASSWORD}
                     value={password}
                     onChange={onPasswordHandler}
@@ -81,15 +74,24 @@ const LoginPage = () => {
                 <div style={{ color: 'red' }}> {errorMessage}</div>
 
                 {disabled ? (
-                    <Button
-                        type={ButtonType.SUBMIT}
-                        theme={ButtonTheme.DEFAULT}
-                        className="black w-400"
+                    <Btn
+                        type="button"
+                        color="white"
+                        bgColor="black"
+                        width="400px"
                     >
                         로그인
-                    </Button>
+                    </Btn>
                 ) : (
-                    <div>nope</div>
+                    <Btn
+                        type="button"
+                        color="white"
+                        bgColor="black"
+                        width="400px"
+                        disabled
+                    >
+                        로그인
+                    </Btn>
                 )}
             </Form>
         </LoginContainer>

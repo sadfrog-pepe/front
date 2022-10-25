@@ -2,13 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import styles from './Input.module.css';
 
-export enum InputType {
-    TEXT = 'text',
-    PASSWORD = 'password',
-    SUBMIT = 'submit',
-    RADIO = 'radio',
-    BUTTON = 'button',
-}
+// type Inputput = Pick<React.HTMLInputTypeAttribute, 'text' | 'password'>;
 
 export enum InputDefaultValue {
     ID = '아이디',
@@ -16,14 +10,14 @@ export enum InputDefaultValue {
 }
 
 interface InputProps {
-    type: InputType;
+    type: React.HTMLInputTypeAttribute;
     value: string;
-    className?: string;
-    placeholder?: string;
-    onChange?: React.ChangeEventHandler<HTMLInputElement>;
+    className: string;
+    placeholder: string;
+    onChange: React.ChangeEventHandler<HTMLInputElement>;
 }
 
-const Input = <T extends InputProps>(props: T) => {
+const Input = <T extends Partial<InputProps>>(props: T) => {
     const { type, value, className, placeholder, onChange } = props;
     const classProps = classNames(styles.input, className);
     return (

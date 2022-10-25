@@ -31,11 +31,13 @@
   }
 
   .rounded {
-    color: var(--brand);
+    color: black;
     background: #fff;
     border: 1px solid black;
     transition: color 0.3s ease, background 0.3s ease;
-
+  }
+  .w-400 {
+    width: 400px;
   }
 
 .black {
@@ -43,6 +45,3 @@
   color:white
 }
 
-.w-400 {
-  width: 400px;
-}
