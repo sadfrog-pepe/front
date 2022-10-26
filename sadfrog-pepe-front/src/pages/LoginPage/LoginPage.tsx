@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Input, { InputDefaultValue } from '../../component/atoms/input/Input';
 import Title from '../../component/atoms/title/Title';
 import Btn from '../../component/atoms/button/Btn';
+import Counter from '../../component/atoms/counter/Counter';
 
 const LoginContainer = styled.div`
     display: flex;
@@ -94,6 +95,7 @@ const LoginPage = () => {
                     </Btn>
                 )}
             </Form>
+            <Counter />
         </LoginContainer>
     );
 };
