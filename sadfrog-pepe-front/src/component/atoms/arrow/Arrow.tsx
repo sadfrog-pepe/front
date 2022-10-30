@@ -9,7 +9,7 @@ export enum ArrowType {
 
 export type ArrowProps = {
     onClick?: React.MouseEventHandler<HTMLButtonElement>;
-    type?: ArrowType;
+    type: ArrowType;
     className?: string;
 };
 

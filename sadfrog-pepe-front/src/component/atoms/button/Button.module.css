@@ -31,21 +31,17 @@
   }
 
   .rounded {
-    color: var(--brand);
+    color: black;
     background: #fff;
     border: 1px solid black;
     transition: color 0.3s ease, background 0.3s ease;
-
+  }
+  .w-400 {
+    width: 400px;
   }
 
-  .icon {
+.black {
+  background-color: black;
+  color:white
+}
 
-  }
-
-  /* Disabled */
-  .disabled {
-    color: var(--grey-2);
-    background: color(var(--grey-4) tint(40%));
-    border-color: var(--grey-4);
-    cursor: default;
-  }

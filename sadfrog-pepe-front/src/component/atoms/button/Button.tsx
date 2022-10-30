@@ -1,19 +1,13 @@
 import React from 'react';
 import classnames from 'classnames';
-
 import styles from './Button.module.css';
-
-// 버튼 타입
-export enum ButtonType {
-    BUTTON = 'button',
-    SUBMIT = 'submit',
-    RESET = 'reset',
-}
 
 // 버튼 테마
 export enum ButtonTheme {
     DEFAULT = 'default',
     ROUNDED = 'rounded',
+    BLACK = 'black',
+    W400 = 'w-400',
 }
 
 // 버튼 사이즈
@@ -25,12 +19,15 @@ export enum ButtonSize {
 
 export type ButtonProps = {
     onClick?: React.MouseEventHandler<HTMLButtonElement>;
-    type: ButtonType;
+    type: 'button' | 'submit' | 'reset' | undefined;
     children?: string;
     theme?: ButtonTheme;
     size?: ButtonSize;
     className?: string;
+    color?: string;
+    bgColor?: string;
 };
+
 const Button = (props: ButtonProps) => {
     const { type, onClick, children, theme, size, className } = props;
 
@@ -40,6 +37,7 @@ const Button = (props: ButtonProps) => {
         styles[size ? size : ''],
         className
     );
+
     return (
         <button type={type} onClick={onClick} className={classProps}>
             {children}

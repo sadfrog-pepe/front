@@ -33,30 +33,30 @@ const MainPageBody = styled.section`
 `;
 
 const MainPage = () => {
-    const [showDetailMenu, setShowDetailMenu] = useState(false);
+    // const [showDetailMenu, setShowDetailMenu] = useState(false);
 
-    const showSideDetailMenu = () => {
-        setShowDetailMenu(true);
-        document.body.style.overflow = 'hidden';
-    };
+    // const showSideDetailMenu = (): void => {
+    //     setShowDetailMenu(true);
+    //     document.body.style.overflow = 'hidden';
+    // };
 
-    const hideSideDetailMenu = () => {
-        setShowDetailMenu(false);
-        document.body.style.overflow = 'unset';
-    };
+    // const hideSideDetailMenu = () => {
+    //     setShowDetailMenu(false);
+    //     document.body.style.overflow = 'unset';
+    // };
     return (
         <MainPageContainer>
-            <DetailMenu
+            {/* <DetailMenu
                 isShow={showDetailMenu}
                 hideDetailMenu={hideSideDetailMenu}
-            />
+            /> */}
             <MainPageContents>
                 {/* 광고판 */}
                 <MainProduction />
                 {/* 헤더 */}
                 <MainPageHeader>
-                    <MainBanner showDetailMenu={showSideDetailMenu} />
-                    <MainMenu />
+                    {/* <MainBanner /> */}
+                    {/* <MainMenu /> */}
                 </MainPageHeader>
                 <MainPageBody>
                     <MainCarousel />
