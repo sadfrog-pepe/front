@@ -6,7 +6,8 @@ const MainLinkList = styled.div`
     display: flex;
     margin: 0;
     padding: 0;
-    width: 800px;
+    /* width는 정해진 레이아웃에 사용하자! */
+    /* width: 800px; */
     height: 50px;
     justify-content: space-around;
     align-items: center;

@@ -6,7 +6,6 @@ const MainMenuContainer = styled.div`
     display: flex;
     justify-content: center;
     width: 100%;
-    border: 1px dotted blue;
 `;
 const DropDownContents = styled.div`
     display: none;
