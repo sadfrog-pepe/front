@@ -7,6 +7,7 @@ const ArrowContainer = styled.div`
     position: absolute;
     left: 0;
     top: 50%;
+    transform: translateY(-50%);
 `;
 
 export interface ArrowListProps {
