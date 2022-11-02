@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Logo } from '../atoms/logo/Logo';
+import Logo from '../atoms/logo/Logo';
 
 const MainBannerContainer = styled.div`
     display: flex;
