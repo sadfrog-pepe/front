@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Title from '../../component/atoms/title/Title';
-import Input, { InputDefaultValue } from '../../component/atoms/input/Input';
+import Input from '../../component/atoms/input/Input';
 import Btn from '../../component/atoms/button/Btn';
 
 const RegisterContainer = styled.div`
@@ -80,26 +80,26 @@ const RegisterPage = () => {
             <Form>
                 <Input
                     type="text"
-                    placeholder={InputDefaultValue.NAME}
+                    placeholder="이름"
                     value={userName}
                     onChange={onNameHandler}
                 />
                 <Input
                     type="email"
-                    placeholder={InputDefaultValue.ID}
+                    placeholder="아이디"
                     value={email}
                     onChange={onEmailHandler}
                 />
                 <div style={{ color: 'red' }}> {emailErrorMessage}</div>
                 <Input
                     type="password"
-                    placeholder={InputDefaultValue.PASSWORD}
+                    placeholder="비밀번호"
                     value={password}
                     onChange={onPasswordHandler}
                 />
                 <Input
                     type="password"
-                    placeholder={InputDefaultValue.PASSWORD_CHECK}
+                    placeholder="비밀번호 확인"
                     value={passwordCheck}
                     onChange={onPasswordCheckHandler}
                 />

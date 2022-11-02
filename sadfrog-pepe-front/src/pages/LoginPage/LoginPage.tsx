@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import Input, { InputDefaultValue } from '../../component/atoms/input/Input';
+import Input from '../../component/atoms/input/Input';
 import Title from '../../component/atoms/title/Title';
 import Btn from '../../component/atoms/button/Btn';
 import Counter from '../../component/atoms/counter/Counter';
@@ -61,13 +61,13 @@ const LoginPage = () => {
             <Form onSubmit={onSubmitHandler}>
                 <Input
                     type="text"
-                    placeholder={InputDefaultValue.ID}
+                    placeholder="아이디"
                     value={email}
                     onChange={onEmailHandler}
                 />
                 <Input
                     type="password"
-                    placeholder={InputDefaultValue.PASSWORD}
+                    placeholder="비밀번호"
                     value={password}
                     onChange={onPasswordHandler}
                 />
