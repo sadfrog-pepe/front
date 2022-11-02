@@ -29,7 +29,14 @@ export type ButtonProps = {
 };
 
 const Button = (props: ButtonProps) => {
-    const { type, onClick, children, theme, size, className } = props;
+    const {
+        type = 'button',
+        onClick,
+        children,
+        theme,
+        size,
+        className,
+    } = props;
 
     const classProps = classnames(
         styles.button,

@@ -42,8 +42,16 @@ const StyledBtn = styled.button`
     ${defaultStyle}
 `;
 
-const Btn = <T extends Partial<BtnProps>>({ type, children, ...props }: T) => {
-    return <StyledBtn {...props}>{children}</StyledBtn>;
+const Btn = <T extends Partial<BtnProps>>({
+    type = 'button',
+    children,
+    ...props
+}: T) => {
+    return (
+        <StyledBtn type={type} {...props}>
+            {children}
+        </StyledBtn>
+    );
 };
 
 export default Btn;
