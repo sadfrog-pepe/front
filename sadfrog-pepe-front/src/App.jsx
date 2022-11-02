@@ -10,6 +10,7 @@ import LoginPage from './pages/LoginPage/LoginPage';
 import RegisterPage from './pages/RegisterPage/RegisterPage';
 import MainBanner from './component/organisms/MainBanner';
 import MainMenu from './component/organisms/MainMenu';
+import MainProduction from './component/organisms/MainProduction';
 
 function App() {
     const [count, setCount] = useState(0);
@@ -17,6 +18,7 @@ function App() {
     const Layout = () => {
         return (
             <div>
+                <MainProduction />
                 <MainBanner />
                 <MainMenu />
                 <Outlet />

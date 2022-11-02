@@ -1,9 +1,5 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import MainMenu from '../../component/organisms/MainMenu';
-import MainBanner from '../../component/organisms/MainBanner';
-import DetailMenu from '../DetailMenu/DetailMenu';
-import MainProduction from '../../component/organisms/MainProduction';
 import MainCarousel from '../../component/organisms/MainCarousel';
 
 const MainPageContainer = styled.div`
@@ -21,11 +17,11 @@ const MainPageContents = styled.div`
     align-items: center;
 `;
 
-const MainPageHeader = styled.header`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-`;
+// const MainPageHeader = styled.header`
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+// `;
 
 const MainPageBody = styled.section`
     width: 100%;
@@ -51,13 +47,6 @@ const MainPage = () => {
                 hideDetailMenu={hideSideDetailMenu}
             /> */}
             <MainPageContents>
-                {/* 광고판 */}
-                <MainProduction />
-                {/* 헤더 */}
-                <MainPageHeader>
-                    {/* <MainBanner /> */}
-                    {/* <MainMenu /> */}
-                </MainPageHeader>
                 <MainPageBody>
                     <MainCarousel />
                 </MainPageBody>
