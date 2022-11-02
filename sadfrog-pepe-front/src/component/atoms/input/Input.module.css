@@ -1,0 +1,12 @@
+.input {
+    width: 400px;
+    padding: 1rem 0.8rem;
+    border-style: none;
+    border-bottom: 1px solid gray;
+    font-size: 0.8rem;
+}
+
+.input:focus::-webkit-input-placeholder,
+textarea:focus::-webkit-input-placeholder { /* WebKit browsers */
+  color:transparent;
+}
