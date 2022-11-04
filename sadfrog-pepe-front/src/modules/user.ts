@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 const USERLOGIN = 'user/USERLOGIN' as const;
 const USERREGISTER = 'user/USERREGISTER' as const;
 
@@ -9,12 +11,25 @@ export const userLogin = () => {
         payload: '',
     };
 };
-export const userRegister = () => {
+export const userRegister = (body: userData) => {
     //axios 통신
+
+    const responce = axios.post(
+        'http://localhost:4000/users',
+        JSON.stringify(body),
+        {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        }
+    );
+
+    const data = responce.then((res) => res.data);
+    console.log(data);
 
     return {
         type: USERREGISTER,
-        payload: '',
+        payload: data,
     };
 };
 
@@ -23,20 +38,28 @@ type UserAction =
     | ReturnType<typeof userLogin>
     | ReturnType<typeof userRegister>;
 
-interface UserState<T extends { id: string; password: number }> {
-    user: T; // 일단 간략하게
+interface userData {
+    id: string;
+    password: string;
+    name: string;
+}
+// 상태의 타입
+interface UserState<T extends userData> {
+    users: T[]; // 일단 간략하게
 }
 
-const initialState: UserState<{ id: string; password: number }> = {
-    user: { id: '', password: 0 },
+const initialState: UserState<userData> = {
+    users: [],
 };
 
 // 리듀서
 const user = (
-    state: UserState<{ id: string; password: number }> = initialState,
+    state: UserState<userData> = initialState,
     action: UserAction
 ) => {
     switch (action.type) {
+        case USERREGISTER:
+            return { ...state, users: action.payload };
         default:
             return state;
     }

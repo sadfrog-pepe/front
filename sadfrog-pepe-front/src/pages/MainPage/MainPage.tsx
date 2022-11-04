@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import MainCarousel from '../../component/organisms/MainCarousel';
 import axios from 'axios';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../modules/index';
 
 const MainPageContainer = styled.div`
     display: flex;
@@ -30,17 +32,8 @@ const MainPageBody = styled.section`
 `;
 
 const MainPage = () => {
-    const [users, setUsers] = useState([]);
-
-    useEffect(() => {
-        getUsers();
-    }, []);
-
-    const getUsers = async () => {
-        const response = await axios.get('http://localhost:4000/users');
-        setUsers(response.data);
-        console.log(response.data);
-    };
+    const users = useSelector((state: RootState) => state.user);
+    console.log(users);
 
     return (
         <MainPageContainer>

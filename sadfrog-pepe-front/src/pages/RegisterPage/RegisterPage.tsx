@@ -4,8 +4,9 @@ import Title from '../../component/atoms/title/Title';
 import Input from '../../component/atoms/input/Input';
 import Btn from '../../component/atoms/button/Btn';
 
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { userRegister } from '../../modules/user';
 
 const RegisterContainer = styled.div`
     display: flex;
@@ -32,6 +33,7 @@ const RegisterPage = () => {
     const [disabled, setDisabled] = useState(false);
 
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     useEffect(() => {
         if (email && password && !emailErrorMessage && !passwordErrorMessage) {
@@ -87,12 +89,8 @@ const RegisterPage = () => {
             id: email,
             password: password,
         };
+        dispatch(userRegister(body));
 
-        axios.post('http://localhost:4000/users', JSON.stringify(body), {
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
         navigate('/');
     };
 
