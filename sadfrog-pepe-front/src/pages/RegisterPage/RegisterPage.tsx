@@ -4,6 +4,9 @@ import Title from '../../component/atoms/title/Title';
 import Input from '../../component/atoms/input/Input';
 import Btn from '../../component/atoms/button/Btn';
 
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
 const RegisterContainer = styled.div`
     display: flex;
     flex-direction: column;
@@ -27,6 +30,8 @@ const RegisterPage = () => {
     const [passwordErrorMessage, setPasswordErrorMessage] = useState('');
 
     const [disabled, setDisabled] = useState(false);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (email && password && !emailErrorMessage && !passwordErrorMessage) {
@@ -74,10 +79,27 @@ const RegisterPage = () => {
         setPasswordCheck(e.currentTarget.value);
     };
 
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
+        let body = {
+            name: userName,
+            id: email,
+            password: password,
+        };
+
+        axios.post('http://localhost:4000/users', JSON.stringify(body), {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+        navigate('/');
+    };
+
     return (
         <RegisterContainer>
             <Title>Sign up</Title>
-            <Form>
+            <Form onSubmit={handleSubmit}>
                 <Input
                     type="text"
                     placeholder="이름"
@@ -107,7 +129,7 @@ const RegisterPage = () => {
 
                 {disabled ? (
                     <Btn
-                        type="button"
+                        type="submit"
                         color="white"
                         bgColor="black"
                         width="400px"
