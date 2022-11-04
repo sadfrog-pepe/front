@@ -1,6 +1,12 @@
 {
   "compileOnSave": true,
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@src/*": [
+        "src/*"
+      ]
+    },
     "target": "ES5",
     "jsx": "react-jsx",
     "module": "esnext",
@@ -25,10 +31,7 @@
     "typeRoots" : ["./@types", "./node_modules/@types"],
     "plugins": [{ "name": "typescript-plugin-css-modules" }],
   },
-  "include": [
-    "./src/"
-  ],
   "exclude": [
     "node_modules/*"
-  ]
+  ],
 }

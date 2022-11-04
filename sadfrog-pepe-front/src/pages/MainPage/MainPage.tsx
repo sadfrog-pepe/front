@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import MainCarousel from '../../component/organisms/MainCarousel';
+import axios from 'axios';
 
 const MainPageContainer = styled.div`
     display: flex;
@@ -29,23 +30,20 @@ const MainPageBody = styled.section`
 `;
 
 const MainPage = () => {
-    // const [showDetailMenu, setShowDetailMenu] = useState(false);
+    const [users, setUsers] = useState([]);
 
-    // const showSideDetailMenu = (): void => {
-    //     setShowDetailMenu(true);
-    //     document.body.style.overflow = 'hidden';
-    // };
+    useEffect(() => {
+        getUsers();
+    }, []);
 
-    // const hideSideDetailMenu = () => {
-    //     setShowDetailMenu(false);
-    //     document.body.style.overflow = 'unset';
-    // };
+    const getUsers = async () => {
+        const response = await axios.get('http://localhost:4000/users');
+        setUsers(response.data);
+        console.log(response.data);
+    };
+
     return (
         <MainPageContainer>
-            {/* <DetailMenu
-                isShow={showDetailMenu}
-                hideDetailMenu={hideSideDetailMenu}
-            /> */}
             <MainPageContents>
                 <MainPageBody>
                     <MainCarousel />
