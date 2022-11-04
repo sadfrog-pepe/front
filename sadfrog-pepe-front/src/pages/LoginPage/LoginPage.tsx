@@ -4,6 +4,8 @@ import Input from '../../component/atoms/input/Input';
 import Title from '../../component/atoms/title/Title';
 import Btn from '../../component/atoms/button/Btn';
 import Counter from '../../component/atoms/counter/Counter';
+import { useDispatch } from 'react-redux';
+import { userLogin } from '../../modules/user';
 
 const LoginContainer = styled.div`
     display: flex;
@@ -23,6 +25,7 @@ const LoginPage = () => {
 
     const [errorMessage, setErrorMessage] = useState('');
     const [disabled, setDisabled] = useState(false); // 로그인 가능여부
+    const dispatch = useDispatch();
 
     useEffect(() => {
         if (email && password && !errorMessage) {
@@ -53,6 +56,7 @@ const LoginPage = () => {
 
     const onPasswordHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         setPassword(e.currentTarget.value);
+        dispatch(userLogin({ id: email, password: password }));
     };
 
     return (

@@ -2,8 +2,7 @@ import axios from 'axios';
 
 const USERLOGIN = 'user/USERLOGIN' as const;
 const USERREGISTER = 'user/USERREGISTER' as const;
-
-export const userLogin = () => {
+export const userLogin = (body: loginData) => {
     // axios 통신
 
     return {
@@ -25,7 +24,6 @@ export const userRegister = (body: userData) => {
     );
 
     const data = responce.then((res) => res.data);
-    console.log(data);
 
     return {
         type: USERREGISTER,
@@ -43,6 +41,9 @@ interface userData {
     password: string;
     name: string;
 }
+
+type loginData = Omit<userData, 'name'>;
+
 // 상태의 타입
 interface UserState<T extends userData> {
     users: T[]; // 일단 간략하게
@@ -60,6 +61,7 @@ const user = (
     switch (action.type) {
         case USERREGISTER:
             return { ...state, users: action.payload };
+
         default:
             return state;
     }
