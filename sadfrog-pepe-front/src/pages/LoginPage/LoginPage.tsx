@@ -56,7 +56,7 @@ const LoginPage = () => {
 
     const onPasswordHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         setPassword(e.currentTarget.value);
-        dispatch(userLogin({ id: email, password: password }));
+        // dispatch(userLogin({ email: email, password: password }));
     };
 
     return (

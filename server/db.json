@@ -1,9 +1,16 @@
 {
   "users": [
     {
-      "id": "abc123@naver.com",
-      "password": "a1234567*",
-      "name": "bkboy"
+      "email": "bk@naver.com",
+      "password": "$2a$10$wzQs/EKJlTJZeNw/uE7YkORkCYnl2G8OTZXC7HKMTQo9Px.tlz7Ru",
+      "name": "bk",
+      "id": 1
+    },
+    {
+      "email": "bkb@naver.com",
+      "password": "$2a$10$q50XB6j26IxXjkMC34Q9O.bAuodoHY1QEY8gLT6PV6p1.sMhHAyPq",
+      "name": "bkb",
+      "id": 2
     }
   ]
 }

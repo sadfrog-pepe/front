@@ -14,7 +14,7 @@ export const userRegister = (body: userData) => {
     //axios 통신
 
     const responce = axios.post(
-        'http://localhost:4000/users',
+        'http://localhost:3000/register',
         JSON.stringify(body),
         {
             headers: {
@@ -37,7 +37,7 @@ type UserAction =
     | ReturnType<typeof userRegister>;
 
 interface userData {
-    id: string;
+    email: string;
     password: string;
     name: string;
 }

@@ -85,13 +85,12 @@ const RegisterPage = () => {
         e.preventDefault();
 
         let body = {
-            name: userName,
-            id: email,
+            email: email,
             password: password,
+            name: userName,
         };
         dispatch(userRegister(body));
-
-        navigate('/');
+        navigate('/login');
     };
 
     return (
