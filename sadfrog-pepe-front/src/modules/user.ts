@@ -5,9 +5,17 @@ const USERREGISTER = 'user/USERREGISTER' as const;
 export const userLogin = (body: loginData) => {
     // axios 통신
 
+    const responce = axios
+        .post('http://localhost:3000/login', JSON.stringify(body), {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+        .then((res) => res.data);
+
     return {
         type: USERLOGIN,
-        payload: '',
+        payload: responce,
     };
 };
 export const userRegister = (body: userData) => {
@@ -62,6 +70,8 @@ const user = (
         case USERREGISTER:
             return { ...state, users: action.payload };
 
+        case USERLOGIN:
+            return { ...state };
         default:
             return state;
     }

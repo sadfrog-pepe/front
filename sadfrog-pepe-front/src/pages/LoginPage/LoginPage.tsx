@@ -6,6 +6,7 @@ import Btn from '../../component/atoms/button/Btn';
 import Counter from '../../component/atoms/counter/Counter';
 import { useDispatch } from 'react-redux';
 import { userLogin } from '../../modules/user';
+import { useNavigate } from 'react-router-dom';
 
 const LoginContainer = styled.div`
     display: flex;
@@ -26,7 +27,7 @@ const LoginPage = () => {
     const [errorMessage, setErrorMessage] = useState('');
     const [disabled, setDisabled] = useState(false); // 로그인 가능여부
     const dispatch = useDispatch();
-
+    const navigate = useNavigate();
     useEffect(() => {
         if (email && password && !errorMessage) {
             setDisabled(true);
@@ -39,6 +40,8 @@ const LoginPage = () => {
         e.preventDefault();
         console.log(`id : ${email}`);
         console.log(`password : ${password}`);
+        dispatch(userLogin({ email: email, password: password }));
+        navigate('/');
     };
 
     const onEmailHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -56,7 +59,6 @@ const LoginPage = () => {
 
     const onPasswordHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         setPassword(e.currentTarget.value);
-        // dispatch(userLogin({ email: email, password: password }));
     };
 
     return (
@@ -80,7 +82,7 @@ const LoginPage = () => {
 
                 {disabled ? (
                     <Btn
-                        type="button"
+                        type="submit"
                         color="white"
                         bgColor="black"
                         width="400px"
