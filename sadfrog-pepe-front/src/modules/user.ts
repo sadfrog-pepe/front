@@ -1,28 +1,29 @@
-import axios from 'axios';
+import axiosInstance from '../api/axios';
+import requests from '../api/request';
 
 const USERLOGIN = 'user/USERLOGIN' as const;
 const USERREGISTER = 'user/USERREGISTER' as const;
 export const userLogin = (body: loginData) => {
     // axios 통신
 
-    const responce = axios
-        .post('http://localhost:3000/login', JSON.stringify(body), {
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        })
-        .then((res) => res.data);
+    // const responce = axiosInstance
+    //     .post('http://localhost:3000/login', JSON.stringify(body), {
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //         },
+    //     })
+    //     .then((res) => res.data);
 
     return {
         type: USERLOGIN,
-        payload: responce,
+        payload: '',
     };
 };
 export const userRegister = (body: userData) => {
     //axios 통신
 
-    const responce = axios.post(
-        'http://localhost:3000/register',
+    const responce = axiosInstance.post(
+        requests.register,
         JSON.stringify(body),
         {
             headers: {
@@ -32,6 +33,7 @@ export const userRegister = (body: userData) => {
     );
 
     const data = responce.then((res) => res.data);
+    console.log(data);
 
     return {
         type: USERREGISTER,
