@@ -21,23 +21,15 @@ export const userLogin = (body: loginData) => {
 };
 export const userRegister = (body: userData) => {
     //axios 통신
+    const responce = axiosInstance
+        .post(requests.register, JSON.stringify(body))
+        .then((res) => res.messege);
 
-    const responce = axiosInstance.post(
-        requests.register,
-        JSON.stringify(body),
-        {
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        }
-    );
-
-    const data = responce.then((res) => res.data);
-    console.log(data);
+    console.log(responce);
 
     return {
         type: USERREGISTER,
-        payload: data,
+        payload: responce,
     };
 };
 
@@ -46,7 +38,7 @@ type UserAction =
     | ReturnType<typeof userLogin>
     | ReturnType<typeof userRegister>;
 
-interface userData {
+export interface userData {
     email: string;
     password: string;
     name: string;
@@ -55,19 +47,12 @@ interface userData {
 type loginData = Omit<userData, 'name'>;
 
 // 상태의 타입
-interface UserState<T extends userData> {
-    users: T[]; // 일단 간략하게
-}
-
-const initialState: UserState<userData> = {
-    users: [],
-};
+export type UsersState = userData[];
+// 초기 상태
+const initialState: UsersState = [];
 
 // 리듀서
-const user = (
-    state: UserState<userData> = initialState,
-    action: UserAction
-) => {
+const user = (state: UsersState = initialState, action: UserAction) => {
     switch (action.type) {
         case USERREGISTER:
             return { ...state, users: action.payload };

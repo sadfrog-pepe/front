@@ -1,30 +1,59 @@
-import axios from 'axios';
+import axios, {
+    AxiosError,
+    AxiosInstance,
+    AxiosRequestConfig,
+    AxiosResponse,
+} from 'axios';
 
-const axiosInstance = axios.create({
+type IConfig = AxiosRequestConfig;
+
+interface Iresponce {
+    messege: string;
+}
+
+const requestConfig: IConfig = {
     baseURL: 'http://127.0.0.1:3030',
-});
-
-axiosInstance.defaults.timeout = 2500;
-
-axiosInstance.interceptors.request.use(
-    (config) => {
-        return config;
+    timeout: 2500,
+    headers: {
+        'Content-Type': 'application/json',
     },
-    (error) => {
-        console.log(error);
-        return Promise.reject(error);
-    }
-);
+};
 
-axiosInstance.interceptors.response.use(
-    (responce) => {
-        const res = responce.data;
-        return res;
-    },
-    (error) => {
-        console.log(error);
-        return Promise.reject(error);
+class HttpRequest {
+    api: any;
+    constructor() {
+        this.api = axios.create(requestConfig);
+
+        this.api.interceptors.request.use(
+            (config: IConfig) => {
+                return config;
+            },
+            (error: any) => {
+                console.log(error);
+                return Promise.reject(error);
+            }
+        );
+
+        this.api.interceptors.response.use(
+            (res: any) => {
+                return res.data;
+            },
+            (error: any) => {
+                console.log(error);
+                return Promise.reject(error);
+            }
+        );
     }
-);
+
+    async post(
+        url: string,
+        data: string,
+        config?: IConfig
+    ): Promise<Iresponce> {
+        return this.api.post(url, data, config);
+    }
+}
+
+const axiosInstance = new HttpRequest();
 
 export default axiosInstance;
