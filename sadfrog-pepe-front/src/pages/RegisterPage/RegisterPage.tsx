@@ -7,6 +7,7 @@ import Btn from '../../component/atoms/button/Btn';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { userRegister } from '../../modules/user';
+// import { useCookies } from 'react-cookie'; // useCookies import
 
 const RegisterContainer = styled.div`
     display: flex;
@@ -26,6 +27,9 @@ const RegisterPage = () => {
     const [password, setPassword] = useState('');
     const [passwordCheck, setPasswordCheck] = useState('');
 
+    // cookie
+    // const [cookies, setCookie, removeCookie] = useCookies(['id']);
+
     // error 메시지
     const [emailErrorMessage, setEmailErrorMessage] = useState('');
     const [passwordErrorMessage, setPasswordErrorMessage] = useState('');
@@ -33,6 +37,7 @@ const RegisterPage = () => {
     const [disabled, setDisabled] = useState(false);
 
     const navigate = useNavigate();
+
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -90,7 +95,7 @@ const RegisterPage = () => {
             name: userName,
         };
         dispatch(userRegister(body));
-        navigate('/login');
+        navigate('/');
     };
 
     return (
