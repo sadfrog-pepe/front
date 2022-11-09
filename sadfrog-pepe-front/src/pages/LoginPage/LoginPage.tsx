@@ -5,7 +5,6 @@ import Title from '../../component/atoms/title/Title';
 import Btn from '../../component/atoms/button/Btn';
 import Counter from '../../component/atoms/counter/Counter';
 import { useDispatch } from 'react-redux';
-import { userLogin } from '../../modules/user';
 import { useNavigate } from 'react-router-dom';
 
 const LoginContainer = styled.div`
@@ -40,8 +39,6 @@ const LoginPage = () => {
         e.preventDefault();
         console.log(`id : ${email}`);
         console.log(`password : ${password}`);
-        dispatch(userLogin({ email: email, password: password }));
-        navigate('/');
     };
 
     const onEmailHandler = (e: React.ChangeEvent<HTMLInputElement>) => {

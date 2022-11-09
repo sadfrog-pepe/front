@@ -5,8 +5,7 @@ import Input from '../../component/atoms/input/Input';
 import Btn from '../../component/atoms/button/Btn';
 
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { userRegister } from '../../modules/user';
+import { useAppDispatch } from '../../modules/store/store';
 // import { useCookies } from 'react-cookie'; // useCookies import
 
 const RegisterContainer = styled.div`
@@ -38,7 +37,7 @@ const RegisterPage = () => {
 
     const navigate = useNavigate();
 
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     useEffect(() => {
         if (email && password && !emailErrorMessage && !passwordErrorMessage) {
@@ -94,7 +93,6 @@ const RegisterPage = () => {
             password: password,
             name: userName,
         };
-        dispatch(userRegister(body));
         navigate('/');
     };
 

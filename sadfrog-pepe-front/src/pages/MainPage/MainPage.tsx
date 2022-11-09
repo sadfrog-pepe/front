@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import MainCarousel from '../../component/organisms/MainCarousel';
-import axios from 'axios';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../modules/index';
 
 const MainPageContainer = styled.div`
     display: flex;
@@ -32,9 +29,6 @@ const MainPageBody = styled.section`
 `;
 
 const MainPage = () => {
-    const users = useSelector((state: RootState) => state.user);
-    console.log(users);
-
     return (
         <MainPageContainer>
             <MainPageContents>

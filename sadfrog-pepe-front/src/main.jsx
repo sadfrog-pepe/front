@@ -2,21 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import GlobalStyle from './GlobalStyle.jsx';
+
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
-import rootReducer from './modules';
-
-import promiseMiddleware from 'redux-promise';
-import ReduxThunk from 'redux-thunk';
-import { composeWithDevTools } from 'redux-devtools-extension';
-// import { CookiesProvider } from 'react-cookie';
-
-const store = applyMiddleware(promiseMiddleware, ReduxThunk)(createStore);
+import store from './modules/store/store';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
         <GlobalStyle />
-        <Provider store={store(rootReducer, composeWithDevTools())}>
+        <Provider store={store}>
             <App />
         </Provider>
     </React.StrictMode>

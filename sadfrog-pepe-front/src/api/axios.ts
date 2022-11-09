@@ -36,7 +36,7 @@ class HttpRequest {
 
         this.api.interceptors.response.use(
             (res: any) => {
-                return res.data;
+                return res;
             },
             (error: any) => {
                 console.log(error);
@@ -45,11 +45,7 @@ class HttpRequest {
         );
     }
 
-    async post(
-        url: string,
-        data: string,
-        config?: IConfig
-    ): Promise<Iresponce> {
+    async post(url: string, data: string, config?: IConfig) {
         return this.api.post(url, data, config);
     }
 }
