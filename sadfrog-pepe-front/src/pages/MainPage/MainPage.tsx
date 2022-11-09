@@ -29,6 +29,7 @@ const MainPageBody = styled.section`
 `;
 
 const MainPage = () => {
+    console.log(localStorage.getItem('refreshToken'));
     return (
         <MainPageContainer>
             <MainPageContents>

@@ -6,6 +6,7 @@ import Btn from '../../component/atoms/button/Btn';
 
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../../modules/store/store';
+import { registerUser, signupUser } from '../../modules/reducers/user';
 // import { useCookies } from 'react-cookie'; // useCookies import
 
 const RegisterContainer = styled.div`
@@ -93,7 +94,15 @@ const RegisterPage = () => {
             password: password,
             name: userName,
         };
-        navigate('/');
+
+        dispatch(signupUser(body)).then((res) => {
+            console.log(res);
+            if (res.type.split('/').includes('fulfilled')) {
+                navigate('/');
+            } else {
+                alert('이미 존재하는 email입니다.');
+            }
+        });
     };
 
     return (

@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import Input from '../../component/atoms/input/Input';
 import Title from '../../component/atoms/title/Title';
 import Btn from '../../component/atoms/button/Btn';
-import Counter from '../../component/atoms/counter/Counter';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
@@ -98,7 +97,6 @@ const LoginPage = () => {
                     </Btn>
                 )}
             </Form>
-            <Counter />
         </LoginContainer>
     );
 };
