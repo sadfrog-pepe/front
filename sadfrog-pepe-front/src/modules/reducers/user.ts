@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { stat } from 'fs';
 import axiosInstance from '../../api/axios';
 import request from '../../api/request';
 
@@ -35,6 +36,14 @@ export const signupUser = createAsyncThunk(
     }
 );
 
+export const auth = createAsyncThunk('user/auth', async () => {
+    const responce = await axiosInstance
+        .get(request.auth)
+        .then((res) => res.data);
+
+    return responce;
+});
+
 export const userSlice = createSlice({
     name: 'user',
     initialState,
@@ -47,6 +56,10 @@ export const userSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder.addCase(signupUser.fulfilled, (state, action) => {
+            state.push(action.payload);
+        });
+
+        builder.addCase(auth.fulfilled, (state, action) => {
             state.push(action.payload);
         });
     },

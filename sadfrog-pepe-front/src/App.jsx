@@ -11,10 +11,12 @@ import RegisterPage from './pages/RegisterPage/RegisterPage';
 import MainBanner from './component/organisms/MainBanner';
 import MainMenu from './component/organisms/MainMenu';
 import MainProduction from './component/organisms/MainProduction';
+import Auth from './hoc/auth';
 
 function App() {
-    const [count, setCount] = useState(0);
-
+    const AuthMainPage = Auth(MainPage, null);
+    const AuthLoginPage = Auth(LoginPage, false);
+    const AuthRegisterPage = Auth(RegisterPage, false);
     const Layout = () => {
         return (
             <div>
@@ -30,9 +32,9 @@ function App() {
         <Router>
             <Routes>
                 <Route path="/" element={<Layout />}>
-                    <Route index element={<MainPage />} />
-                    <Route path="/login" element={<LoginPage />} />
-                    <Route path="/register" element={<RegisterPage />} />
+                    <Route index element={<AuthMainPage />} />
+                    <Route path="/login" element={<AuthLoginPage />} />
+                    <Route path="/register" element={<AuthRegisterPage />} />
                 </Route>
             </Routes>
         </Router>

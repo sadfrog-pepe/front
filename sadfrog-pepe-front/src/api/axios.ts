@@ -44,6 +44,10 @@ class HttpRequest {
     async post(url: string, data: string, config?: IConfig) {
         return this.api.post(url, data, config);
     }
+
+    async get(url: string, config?: IConfig) {
+        return this.api.get(url);
+    }
 }
 
 const axiosInstance = new HttpRequest();
