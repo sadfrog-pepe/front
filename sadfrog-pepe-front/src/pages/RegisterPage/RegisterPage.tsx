@@ -19,7 +19,20 @@ const Form = styled.form`
     display: flex;
     flex-direction: column;
     align-items: center;
+    row-gap: 3rem;
 `;
+
+const InputContainer = styled.div`
+    width: 600px;
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    & Input {
+        position: absolute;
+        right: 0px;
+    }
+`
 
 const RegisterPage = () => {
     const [email, setEmail] = useState('');
@@ -109,32 +122,61 @@ const RegisterPage = () => {
         <RegisterContainer>
             <Title>Sign up</Title>
             <Form onSubmit={handleSubmit}>
-                <Input
-                    type="text"
-                    placeholder="이름"
-                    value={userName}
-                    onChange={onNameHandler}
-                />
-                <Input
-                    type="email"
-                    placeholder="아이디"
-                    value={email}
-                    onChange={onEmailHandler}
-                />
-                <div style={{ color: 'red' }}> {emailErrorMessage}</div>
-                <Input
-                    type="password"
-                    placeholder="비밀번호"
-                    value={password}
-                    onChange={onPasswordHandler}
-                />
-                <Input
-                    type="password"
-                    placeholder="비밀번호 확인"
-                    value={passwordCheck}
-                    onChange={onPasswordCheckHandler}
-                />
-                <div style={{ color: 'red' }}> {passwordErrorMessage}</div>
+                <InputContainer>
+                    <div className='name'>이름 <span className='point'>*</span></div>
+                    <Input
+                        type="text"
+                        placeholder="이름"
+                        value={userName}
+                        onChange={onNameHandler}
+                    />
+                </InputContainer>
+                <InputContainer>
+                    <div>이메일 <span>*</span></div>
+                    <Input
+                        type="email"
+                        placeholder="이메일"
+                        value={email}
+                        onChange={onEmailHandler}
+                    />
+                    <div style={{ color: 'red' }}> {emailErrorMessage}</div>
+                </InputContainer>
+                <InputContainer>
+                    <div>비밀번호<span>*</span></div>
+                    <Input
+                        type="password"
+                        placeholder="비밀번호"
+                        value={password}
+                        onChange={onPasswordHandler}
+                    />
+                </InputContainer>
+                <InputContainer>
+                    <div>비밀번호 확인<span>*</span></div>
+                    <Input
+                        type="password"
+                        placeholder="비밀번호 확인"
+                        value={passwordCheck}
+                        onChange={onPasswordCheckHandler}
+                    />
+                    <div style={{ color: 'red' }}> {passwordErrorMessage}</div>
+                </InputContainer>
+                {/* 수정 필요 */}
+                <div style={{display : 'flex'}}>
+                    <Input type="checkbox"  name="news_letter" />
+                    <label htmlFor="news_letter">[선택]뉴스레터 수신동의</label>
+                </div>
+                <div style={{display : 'flex'}}>
+                    <Input type="checkbox"  name="news_letter" />
+                    <label htmlFor="marketing">[선택]마케팅 목적 개인정보 수집 및 이용에 대한 동의</label>
+                    {/* <ul>
+                            <li><span >항목 : 성별, 생년월일</span></li>
+                            <li>고객님께서는 위의 개인정보 및 회원정보 수정 등을 통해 추가로 수집하는 개인정보에<br/>
+                                대해 동의하지 않거나 개인정보를 기재하지 않음으로써 거부하실 수 있습니다.<br/>
+                                다만 이때 회원 대상 서비스가 제한될 수 있습니다.
+                            </li>
+                    </ul> */}
+                </div>
+
 
                 {disabled ? (
                     <Btn

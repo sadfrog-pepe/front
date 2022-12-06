@@ -1,8 +1,7 @@
 .input {
     width: 400px;
     padding: 1rem 0.8rem;
-    border-style: none;
-    border-bottom: 1px solid gray;
+    border: 1px solid gray;
     font-size: 0.8rem;
 }
 
