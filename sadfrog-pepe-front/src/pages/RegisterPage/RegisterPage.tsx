@@ -96,12 +96,12 @@ const RegisterPage = () => {
         };
 
         dispatch(signupUser(body)).then((res) => {
-            console.log(res);
-            if (res.type.split('/').includes('fulfilled')) {
-                navigate('/');
-            } else {
-                alert('이미 존재하는 email입니다.');
-            }
+            // console.log(res);
+            // if (res.type.split('/').includes('fulfilled')) {
+            //     navigate('/');
+            // } else {
+            //     alert('이미 존재하는 email입니다.');
+            // }
         });
     };
 

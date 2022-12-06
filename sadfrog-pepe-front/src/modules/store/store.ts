@@ -7,9 +7,9 @@ import user from '../reducers/user';
 // import logger from 'redux-logger';
 
 const store = configureStore({
-    reducer: {
-        user,
-    },
+  reducer: {
+    user,
+  },
 });
 
 export type RootState = ReturnType<typeof store.getState>;
