@@ -7,14 +7,14 @@ module.exports = {
   mode: 'development',
   entry: { index: path.resolve(__dirname, 'src', 'main.jsx') },
   output: {
-    filename: 'bunndle.[hash].js',
+    filename: 'bunndle.js',
     path: path.resolve(__dirname, './dist'),
   },
   resolve: {
     extensions: ['.jsx', '.tsx', '.js', '.ts', '.wasm'],
   },
   devServer: {
-    host: 'localhost',
+    host: '0.0.0.0',
     port: port,
     open: true,
     hot: true,
