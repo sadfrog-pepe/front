@@ -20,9 +20,6 @@ export const signupUser = createAsyncThunk(
         JSON.stringify(userData)
       );
 
-      console.log(response);
-      console.log(response.cookies);
-
       if (response.status === 201) {
         // localStorage.setItem(
         //     'accessToken',
@@ -53,8 +50,8 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     registerUser: (state, action) => {
-      console.log(action.payload);
-      console.log(action.type);
+      // console.log(action.payload);
+      // console.log(action.type);
       state.push(action.payload);
     },
   },

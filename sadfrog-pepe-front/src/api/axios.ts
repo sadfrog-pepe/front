@@ -8,7 +8,7 @@ interface Iresponce {
 }
 
 const requestConfig: IConfig = {
-  baseURL: ' http://13.124.239.117',
+  baseURL: 'http://13.124.239.117',
   timeout: 2500,
   headers: {
     'Content-Type': 'application/json',
