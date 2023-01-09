@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import LinkComponent, { LinkSize, LinkTheme } from '../atoms/link/Link';
+import Btn from '../atoms/button/Btn';
 
 const MainLinkList = styled.div`
   display: flex;
@@ -13,15 +14,17 @@ const MainLinkList = styled.div`
   align-items: center;
 `;
 
-const LinkList = () => {
+const LinkList = (props: {
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
+}) => {
   return (
     <MainLinkList>
       <LinkComponent
-        to={'/brand'}
+        to={'/##'}
         size={LinkSize.MEDIUM}
         theme={LinkTheme.DEFAULT}
       >
-        [브랜드]
+        여성
       </LinkComponent>
       <LinkComponent
         to={'/##'}
@@ -29,57 +32,54 @@ const LinkList = () => {
         theme={LinkTheme.DEFAULT}
         color="gold"
       >
-        [프리미엄]
+        프리미엄
       </LinkComponent>
       <LinkComponent
         to={'/##'}
         size={LinkSize.MEDIUM}
         theme={LinkTheme.DEFAULT}
       >
-        [SET]
+        남성
       </LinkComponent>
       <LinkComponent
         to={'/##'}
         size={LinkSize.MEDIUM}
         theme={LinkTheme.DEFAULT}
       >
-        [미사용품]
+        신상품
       </LinkComponent>
       <LinkComponent
         to={'/##'}
         size={LinkSize.MEDIUM}
         theme={LinkTheme.DEFAULT}
       >
-        [신상품]
+        아우터
       </LinkComponent>
       <LinkComponent
         to={'/##'}
         size={LinkSize.MEDIUM}
         theme={LinkTheme.DEFAULT}
       >
-        [아우터]
+        상의
       </LinkComponent>
       <LinkComponent
         to={'/##'}
         size={LinkSize.MEDIUM}
         theme={LinkTheme.DEFAULT}
       >
-        [상의]
+        팬츠
       </LinkComponent>
       <LinkComponent
         to={'/##'}
         size={LinkSize.MEDIUM}
         theme={LinkTheme.DEFAULT}
       >
-        [팬츠]
+        악세서리
       </LinkComponent>
-      <LinkComponent
-        to={'/##'}
-        size={LinkSize.MEDIUM}
-        theme={LinkTheme.DEFAULT}
-      >
-        [For woman]
-      </LinkComponent>
+
+      <Btn width="50px" type="button" onClick={props.onClick}>
+        <i className="ri-search-line"></i>
+      </Btn>
     </MainLinkList>
   );
 };

@@ -16,7 +16,7 @@ export enum LinkSize {
 
 export interface LinkProps {
   to: string;
-  children: string;
+  children: any;
   theme?: LinkTheme;
   size?: LinkSize;
   color?: string;

@@ -11,7 +11,10 @@ import RegisterPage from './pages/RegisterPage/RegisterPage';
 import MainBanner from './component/organisms/MainBanner';
 import MainMenu from './component/organisms/MainMenu';
 import Auth from './hoc/auth';
+
+// 새롭게 추가중인 것들
 import Header from './component/organisms/Header';
+import NavigationBar from './component/organisms/NavigationBar';
 
 function App() {
   const AuthMainPage = Auth(MainPage, null);
@@ -23,8 +26,8 @@ function App() {
         {/* <MainBanner />
         <MainMenu />
         <Outlet /> */}
-        <Header>header</Header>
-        <nav>navigation bar</nav>
+        <Header />
+        <NavigationBar />
         <main>
           <section>section1</section>
           <section>section2</section>
