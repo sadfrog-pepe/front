@@ -2,8 +2,6 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axiosInstance from '../../api/axios';
 import request from '../../api/request';
 
-import { setRefreshToken } from '../../storage/Cookie';
-
 interface UserState {
   email: string;
   password: string;
@@ -110,10 +108,6 @@ export const userSlice = createSlice({
     });
 
     builder.addCase(signInUser.fulfilled, (state, action) => {
-      state.push(action.payload);
-    });
-
-    builder.addCase(signInUserCookie.fulfilled, (state, action) => {
       state.push(action.payload);
     });
   },

@@ -13,6 +13,7 @@ import Auth from './hoc/auth';
 // 새롭게 추가중인 것들
 import Header from './component/organisms/Header';
 import NavigationBar from './component/organisms/NavigationBar';
+import Main from './component/organisms/Main';
 
 function App() {
   const AuthMainPage = Auth(MainPage, null);
@@ -26,11 +27,7 @@ function App() {
         <Outlet /> */}
         <Header />
         <NavigationBar />
-        <main>
-          <section>section1</section>
-          <section>section2</section>
-          <section>section3</section>
-        </main>
+        <Main />
         <footer>footer</footer>
       </div>
     );

@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 import type { TypedUseSelectorHook } from 'react-redux';
 import user from '../reducers/user';
+import product from '../reducers/product';
 
 // import untypedMiddleware from 'untyped-middleware';
 // import logger from 'redux-logger';
@@ -9,6 +10,7 @@ import user from '../reducers/user';
 const store = configureStore({
   reducer: {
     user,
+    product,
   },
 });
 
