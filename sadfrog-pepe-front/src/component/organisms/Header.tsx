@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Logo from '../atoms/logo/Logo';
+import SideBar from './SideBar';
 import { useMediaQuery } from 'react-responsive';
 
 const HeaderContainer = styled.header`
@@ -50,7 +51,6 @@ const HeaderRightMenu = styled.div`
 
 const HeaderLogoBox = styled.div`
   flex-basis: calc(100% / 3);
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -76,6 +76,12 @@ const Header = () => {
     query: '(min-width : 768px) and (max-width : 1023px)',
   });
 
+  const [isShowSideBar, setIsShowSideBar] = useState(false);
+
+  const handleButton = () => {
+    setIsShowSideBar(!isShowSideBar);
+    console.log(isShowSideBar);
+  };
   return (
     <HeaderContainer>
       {isDesktop && (
@@ -94,7 +100,9 @@ const Header = () => {
           <HeaderRightMenu>
             <ul>
               <li>
-                <i className="ri-user-line"></i>로그인
+                <a href="/login">
+                  <i className="ri-user-line"></i>로그인
+                </a>
               </li>
               <li>
                 <i className="ri-service-line"></i>즐겨찾기
@@ -108,7 +116,8 @@ const Header = () => {
       )}
       {isTablet && (
         <>
-          <HeaderButton>
+          <SideBar isShow={isShowSideBar} setIsShow={setIsShowSideBar} />
+          <HeaderButton onClick={() => handleButton()}>
             <i className="ri-menu-line"></i>
           </HeaderButton>
           <HeaderLogoBox>

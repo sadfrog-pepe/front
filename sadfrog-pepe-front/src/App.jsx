@@ -8,8 +8,6 @@ import {
 import MainPage from './pages/MainPage/MainPage';
 import LoginPage from './pages/LoginPage/LoginPage';
 import RegisterPage from './pages/RegisterPage/RegisterPage';
-import MainBanner from './component/organisms/MainBanner';
-import MainMenu from './component/organisms/MainMenu';
 import Auth from './hoc/auth';
 
 // 새롭게 추가중인 것들
@@ -43,9 +41,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<AuthMainPage />} />
-          <Route path="/login" element={<AuthLoginPage />} />
           <Route path="/register" element={<AuthRegisterPage />} />
         </Route>
+        <Route path="/login" element={<AuthLoginPage />} />
       </Routes>
     </Router>
   );
