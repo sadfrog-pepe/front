@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import MainCarousel from '../../component/organisms/MainCarousel';
 
 const MainPageContainer = styled.div`
   display: flex;
@@ -32,9 +31,7 @@ const MainPage = () => {
   return (
     <MainPageContainer>
       <MainPageContents>
-        <MainPageBody>
-          <MainCarousel />
-        </MainPageBody>
+        <MainPageBody></MainPageBody>
       </MainPageContents>
     </MainPageContainer>
   );

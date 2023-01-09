@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import LinkList from '../moecules/LinkList';
-import MainCarousel from './MainCarousel';
+import Carousel from '../moecules/Carousel';
 import { useMediaQuery } from 'react-responsive';
 
 const NavigationContainer = styled.nav`
@@ -66,7 +66,7 @@ const NavigationBar = () => {
           <NavigationSearch isActive={isActive}>
             <NavigationInput />
           </NavigationSearch>
-          <MainCarousel />
+          <Carousel />
         </>
       )}
 
@@ -81,7 +81,7 @@ const NavigationBar = () => {
           >
             회원 혜택: 3만원 이상 무료배송 & 첫 구매 10% 할인
           </div>
-          <MainCarousel />
+          <Carousel />
         </>
       )}
     </NavigationContainer>

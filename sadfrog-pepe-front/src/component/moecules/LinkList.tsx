@@ -15,7 +15,7 @@ const MainLinkList = styled.div`
 `;
 
 const LinkList = (props: {
-  onClick: React.MouseEventHandler<HTMLButtonElement>;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }) => {
   return (
     <MainLinkList>

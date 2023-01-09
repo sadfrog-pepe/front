@@ -1,8 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
-
 import styled from 'styled-components';
-import ArrowList from '../moecules/ArrowList';
-import styles from './MainCarousel.module.css';
+import ArrowList from './ArrowList';
 
 const CarouselContainer = styled.div`
   position: relative;
@@ -70,7 +68,7 @@ const CarouselBtns = styled.div`
   }
 `;
 
-const MainCarousel = () => {
+const Carousel = () => {
   const IMG = ['images/1.png', 'images/2.png', 'images/3.png', 'images/1.png']; // dummy data
   const TOTAL_LENGTH = IMG.length - 1;
 
@@ -128,4 +126,4 @@ const MainCarousel = () => {
   );
 };
 
-export default MainCarousel;
+export default Carousel;
