@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import LinkList from '../moecules/LinkList';
 import MainCarousel from './MainCarousel';
+import { useMediaQuery } from 'react-responsive';
 
 const NavigationContainer = styled.nav`
   width: 1024px;
@@ -10,24 +11,6 @@ const NavigationContainer = styled.nav`
   @media screen and (max-width: 1024px) {
     width: 100%;
   }
-`;
-
-const NavigationContents = styled.div``;
-
-const InputButton = styled.button`
-  width: 56px;
-  height: 56px;
-  background-color: black;
-  border-radius: 50%;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 10px;
-  margin: auto;
-  display: grid;
-  place-items: center;
-  cursor: pointer;
-  transition: trasform 0.6s cubic-bezier(0.9, 0, 0.3, 0.9);
 `;
 
 const NavigationSearch = styled.div<{ isActive: boolean }>`
@@ -65,19 +48,42 @@ const NavigationInput = styled.input`
 `;
 
 const NavigationBar = () => {
+  const isDesktop: boolean = useMediaQuery({
+    query: '(min-width:1024px)',
+  });
+  const isTablet: boolean = useMediaQuery({
+    query: '(min-width : 768px) and (max-width : 1023px)',
+  });
   const [isActive, setIsActive] = useState(false);
 
   return (
     <NavigationContainer>
-      <NavigationContents>
-        {/* 메뉴 */}
-        <LinkList onClick={() => setIsActive(!isActive)} />
-        {/* 검색 창 */}
-        <NavigationSearch isActive={isActive}>
-          <NavigationInput />
-        </NavigationSearch>
-      </NavigationContents>
-      <MainCarousel />
+      {isDesktop && (
+        <>
+          {/* 메뉴 */}
+          <LinkList onClick={() => setIsActive(!isActive)} />
+          {/* 검색 창 */}
+          <NavigationSearch isActive={isActive}>
+            <NavigationInput />
+          </NavigationSearch>
+          <MainCarousel />
+        </>
+      )}
+
+      {isTablet && (
+        <>
+          <div
+            style={{
+              textAlign: 'center',
+              fontSize: 'small',
+              marginBottom: '1rem',
+            }}
+          >
+            회원 혜택: 3만원 이상 무료배송 & 첫 구매 10% 할인
+          </div>
+          <MainCarousel />
+        </>
+      )}
     </NavigationContainer>
   );
 };
