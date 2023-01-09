@@ -10,8 +10,8 @@ import LoginPage from './pages/LoginPage/LoginPage';
 import RegisterPage from './pages/RegisterPage/RegisterPage';
 import MainBanner from './component/organisms/MainBanner';
 import MainMenu from './component/organisms/MainMenu';
-import MainProduction from './component/organisms/MainProduction';
 import Auth from './hoc/auth';
+import Header from './component/organisms/Header';
 
 function App() {
   const AuthMainPage = Auth(MainPage, null);
@@ -20,10 +20,17 @@ function App() {
   const Layout = () => {
     return (
       <div>
-        <MainProduction />
-        <MainBanner />
+        {/* <MainBanner />
         <MainMenu />
-        <Outlet />
+        <Outlet /> */}
+        <Header>header</Header>
+        <nav>navigation bar</nav>
+        <main>
+          <section>section1</section>
+          <section>section2</section>
+          <section>section3</section>
+        </main>
+        <footer>footer</footer>
       </div>
     );
   };

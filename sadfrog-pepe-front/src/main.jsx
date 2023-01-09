@@ -5,6 +5,7 @@ import GlobalStyle from './GlobalStyle.jsx';
 
 import { Provider } from 'react-redux';
 import store from './modules/store/store';
+import 'remixicon/fonts/remixicon.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

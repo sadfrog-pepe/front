@@ -3,6 +3,7 @@ const requests = {
   login: '/api/auths/login',
   auth: '/api/auths/authenticate',
   logout: '/api/auths/logout',
+  loginCookie: '/api/auths/login-cookie',
 };
 
 export default requests;

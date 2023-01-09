@@ -3,6 +3,7 @@ import axiosInstance from '../../api/axios';
 import request from '../../api/request';
 
 import { setRefreshToken } from '../../storage/Cookie';
+
 interface UserState {
   email: string;
   password: string;
@@ -37,6 +38,50 @@ export const signupUser = createAsyncThunk(
   }
 );
 
+export const signInUser = createAsyncThunk(
+  'user/signInUser',
+  async (loginData: { email: string; password: string }) => {
+    try {
+      const response = await axiosInstance.post(
+        request.login,
+        JSON.stringify(loginData)
+      );
+
+      if (response.status === 201) {
+        return { ...response.data, ...loginData };
+      } else {
+        throw new Error();
+      }
+    } catch (e: any) {
+      console.log('Error', e.response.data);
+      throw new Error();
+    }
+  }
+);
+
+export const signInUserCookie = createAsyncThunk(
+  'user/signInUser/Cookie',
+  async (loginData: { email: string; password: string }) => {
+    try {
+      const response = await axiosInstance.post(
+        request.loginCookie,
+        JSON.stringify(loginData)
+      );
+
+      // console.log(`responce.data : ${response.data}`);
+
+      if (response.status === 201) {
+        return { ...response, ...loginData };
+      } else {
+        throw new Error();
+      }
+    } catch (e: any) {
+      console.log('Error', e.response.data);
+      throw new Error();
+    }
+  }
+);
+
 export const auth = createAsyncThunk('user/auth', async () => {
   const responce = await axiosInstance
     .get(request.auth)
@@ -61,6 +106,14 @@ export const userSlice = createSlice({
     });
 
     builder.addCase(auth.fulfilled, (state, action) => {
+      state.push(action.payload);
+    });
+
+    builder.addCase(signInUser.fulfilled, (state, action) => {
+      state.push(action.payload);
+    });
+
+    builder.addCase(signInUserCookie.fulfilled, (state, action) => {
       state.push(action.payload);
     });
   },

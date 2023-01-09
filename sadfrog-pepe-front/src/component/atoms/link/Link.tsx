@@ -5,39 +5,39 @@ import classnames from 'classnames';
 import styled, { css } from 'styled-components';
 
 export enum LinkTheme {
-    DEFAULT = 'default',
+  DEFAULT = 'default',
 }
 
 export enum LinkSize {
-    SMALL = 'small',
-    MEDIUM = 'medium',
-    LARGE = 'large',
+  SMALL = 'small',
+  MEDIUM = 'medium',
+  LARGE = 'large',
 }
 
 export interface LinkProps {
-    to: string;
-    children: string;
-    theme?: LinkTheme;
-    size?: LinkSize;
-    color?: string;
-    className?: string;
+  to: string;
+  children: string;
+  theme?: LinkTheme;
+  size?: LinkSize;
+  color?: string;
+  className?: string;
 }
 const LinkComponent = (props: LinkProps) => {
-    const { to, children, theme, size, color, className } = props;
+  const { to, children, theme, size, color, className } = props;
 
-    const classProps = classnames(
-        styles.link,
-        styles[theme ? theme : ''],
-        styles[size ? size : ''],
-        styles[color ? color : ''],
-        className
-    );
+  const classProps = classnames(
+    styles.link,
+    styles[theme ? theme : ''],
+    styles[size ? size : ''],
+    styles[color ? color : ''],
+    className
+  );
 
-    return (
-        <Link to={to} className={classProps}>
-            {children}
-        </Link>
-    );
+  return (
+    <Link to={to} className={classProps}>
+      {children}
+    </Link>
+  );
 };
 
 export default LinkComponent;
